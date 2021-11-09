@@ -4,10 +4,12 @@ import os
 import numpy as np
 import handTrackingModule as htm
 from keras.models import load_model
+import skimage
+from skimage.transform import resize
+import matplotlib.pyplot as plt
+model = load_model('SL_model5.h5')
 
-model = load_model('SL_model1.h5')
-
-wCam, hCam = 640, 640
+wCam, hCam = 1028, 1028
 
 cap = cv2.VideoCapture(0)
 cap.set(3, wCam)
@@ -17,7 +19,7 @@ detector = htm.handDetector(detectionCon=0.75)
 
 pTime = 0
 contours_size = 100
-padding = 50
+padding = 55
 
 label = {}
 for i in range(ord('A'), ord('Z')+1):
@@ -31,10 +33,12 @@ label[27] = 'nothing'
 label[28] = 'space'
 
 def getCalssName(classNo):
-    return label[classNo]
+    return label[classNo[0]]
 
 def grayscale(img):
     img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    # img = skimage.transform.resize(img, (64, 64, 1))
+
     return img
 
 def equalize(img):
@@ -70,7 +74,9 @@ def reshape_contours(x0, x1, y0, y1, padding):
 ##
 while True:
     success, image = cap.read()
-    image, landmarks = detector.findHands(image)
+    image_cp = image.copy()
+    _, landmarks = detector.findHands(image_cp)
+    hand_image = image.copy()
 
     ##
     try:
@@ -110,24 +116,44 @@ while True:
     pTime = cTime
 
     # PROCESS IMAGE
-    cropImage = image[min_y:max_y, min_x:max_x]
-    cropImage = np.asarray(cropImage)
-    cropImage = cv2.resize(cropImage, (64, 64))
-    cropImage = preprocessing(cropImage)
-    cv2.imshow("Preprocessing", cropImage)
-    cropImage = cropImage.reshape(1, 64, 64, 1)
+    try:
+        cropImage = hand_image[min_y:max_y, min_x:max_x]
+        cropImage = np.array(cropImage)
+        cropImage = cv2.resize(cropImage, (64, 64))
+        cropImage = preprocessing(cropImage)
+        cv2.imshow("Preprocessing", cropImage)
+        # print(cropImage.shape)
 
-    #Predict 
+        cropImage = cropImage.reshape(1, 64, 64, 1)
 
-    predictions = model.predict(cropImage)
-    classIndex = model.predict_classes(cropImage)     
-    probabilityValue =np.amax(predictions)
-    print(classIndex, probabilityValue)
-    cv2.putText(image, str(round(probabilityValue*100,2) )+"%", (180, 75), cv2.FONT_HERSHEY_PLAIN, 0.75, (0, 0, 255), 2, cv2.LINE_AA)
-    cv2.putText(image, f'FPS: {int(fps)}', (30, 50), cv2.FONT_HERSHEY_PLAIN,
-                3, (255, 0, 0), 3)
+        #Predict 
+
+        predictions = model.predict(cropImage)
+        classIndex = model.predict_classes(cropImage)     
+        probabilityValue =np.amax(predictions)
+        print(getCalssName(classIndex), probabilityValue)
+        cv2.putText(image, str(round(probabilityValue*100,2) )+"%", (180, 75), cv2.FONT_HERSHEY_PLAIN, 5, (0, 0, 255), 2, cv2.LINE_AA)
+        cv2.putText(image, f'FPS: {int(fps)}', (30, 50), cv2.FONT_HERSHEY_PLAIN,
+                    3, (255, 0, 0), 3)
+    except Exception as e: 
+        print(e)
+        pass
     cv2.imshow("Result", image)
 
     if (cv2.waitKey(1) & 0xff) == ord('q'):
         break
-    
+
+# test_path = r'D:\18TCLC_NHAT\nam_4\ky_1\PBL4\Sign-language-prediction\gesturePrediction\test_data\asl_alphabet_test'
+# test_list = os.listdir(test_path)
+# for x in test_list:
+#     imgOriginal = cv2.imread(test_path +'/'+x)
+#     img = np.array(imgOriginal)
+#     img = cv2.resize(img,(64,64))
+#     img = preprocessing(img)
+#     img = img.reshape(1, 64, 64, 1)
+#     prediction = model.predict(img)
+
+#     print(f"I guess : {label[np.argmax(prediction)]} | ", ' x =', x)    
+#     img_rgb = plt.imread(test_path+'/'+x)
+#     plt.imshow(imgOriginal, cmap='gray')
+#     plt.show()
