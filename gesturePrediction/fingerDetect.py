@@ -143,17 +143,20 @@ while True:
     if (cv2.waitKey(1) & 0xff) == ord('q'):
         break
 
-# test_path = r'D:\18TCLC_NHAT\nam_4\ky_1\PBL4\Sign-language-prediction\gesturePrediction\test_data\asl_alphabet_test'
+
+
+# # ##data testing
+# test_path = r'D:\18TCLC_NHAT\nam_4\ky_1\PBL4\Sign-language-prediction\gesturePrediction\test_data02'
 # test_list = os.listdir(test_path)
 # for x in test_list:
 #     imgOriginal = cv2.imread(test_path +'/'+x)
-#     img = np.array(imgOriginal)
+#     img = np.array(imgOriginal)   
 #     img = cv2.resize(img,(64,64))
 #     img = preprocessing(img)
 #     img = img.reshape(1, 64, 64, 1)
 #     prediction = model.predict(img)
 
-#     print(f"I guess : {label[np.argmax(prediction)]} | ", ' x =', x)    
+#     print(f"I guess : {label[np.argmax(prediction)]} | with = {np.amax(prediction)} |  ", ' x =', x)    
 #     img_rgb = plt.imread(test_path+'/'+x)
 #     plt.imshow(imgOriginal, cmap='gray')
 #     plt.show()
