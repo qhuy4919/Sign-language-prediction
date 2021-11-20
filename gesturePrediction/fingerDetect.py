@@ -7,7 +7,7 @@ from keras.models import load_model
 import skimage
 from skimage.transform import resize
 import matplotlib.pyplot as plt
-model = load_model('SL_model5.h5')
+model = load_model('SL_model7.h5')
 
 wCam, hCam = 1028, 1028
 
@@ -47,7 +47,7 @@ def equalize(img):
 
 def preprocessing(img):
     img = grayscale(img)
-    img = equalize(img)
+    # img = equalize(img)
     return img
 
 
