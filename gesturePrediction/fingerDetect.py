@@ -7,9 +7,9 @@ from keras.models import load_model
 import skimage
 from skimage.transform import resize
 import matplotlib.pyplot as plt
-model = load_model('SL_model7.h5')
+model = load_model('SL_model_2_1.h5')
 
-wCam, hCam = 1028, 1028
+wCam, hCam = 1280, 720
 
 cap = cv2.VideoCapture(0)
 cap.set(3, wCam)
@@ -20,17 +20,23 @@ detector = htm.handDetector(detectionCon=0.75)
 pTime = 0
 contours_size = 100
 padding = 55
+threshold = 0.75  
 
-label = {}
-for i in range(ord('A'), ord('Z')+1):
-    label[chr(i)] = i - ord('A')
-    label[i - ord('A')] = chr(i)
-label['del'] = 26
-label['nothing'] = 27
-label['space'] = 28
-label[26] = 'del'
-label[27] = 'nothing'
-label[28] = 'space'
+# for i in range(ord('A'), ord('Z')+1):
+#     label[chr(i)] = i - ord('A')
+#     label[i - ord('A')] = chr(i)
+# label['del'] = 26
+# label['nothing'] = 27
+# label['space'] = 28
+# label[26] = 'del'
+# label[27] = 'nothing'
+# label[28] = 'space'
+labels = ['ban la nhat', 'iloveyou', 'quay len nao']
+label = {
+}
+for i in range(len(labels)):
+    label[labels[i]] = i
+    label[i] = labels[i]
 
 def getCalssName(classNo):
     return label[classNo[0]]
@@ -74,9 +80,9 @@ def reshape_contours(x0, x1, y0, y1, padding):
 ##
 while True:
     success, image = cap.read()
-    image_cp = image.copy()
-    _, landmarks = detector.findHands(image_cp)
-    hand_image = image.copy()
+    # image_cp = image.copy()
+    _, landmarks = detector.findHands(image)
+    # hand_image = image.copy()
 
     ##
     try:
@@ -115,26 +121,30 @@ while True:
 
     pTime = cTime
 
+   
     # PROCESS IMAGE
     try:
-        cropImage = hand_image[min_y:max_y, min_x:max_x]
+        cropImage = image[min_y:max_y, min_x:max_x]
         cropImage = np.array(cropImage)
         cropImage = cv2.resize(cropImage, (64, 64))
-        cropImage = preprocessing(cropImage)
-        cv2.imshow("Preprocessing", cropImage)
-        # print(cropImage.shape)
+        hsv = cv2.cvtColor(cropImage, cv2.COLOR_BGR2HSV)
+        mask = cv2.inRange(hsv, (58,255,255), (62, 255, 255))
+        cv2.imshow("Mask", mask)
+        mask= mask.reshape(1, 64, 64,1)
+        # mask = preprocessing(mask)
 
-        cropImage = cropImage.reshape(1, 64, 64, 1)
+        
 
         #Predict 
-
-        predictions = model.predict(cropImage)
-        classIndex = model.predict_classes(cropImage)     
+        predictions = model.predict(mask)
+        classIndex = model.predict_classes(mask)     
         probabilityValue =np.amax(predictions)
-        print(getCalssName(classIndex), probabilityValue)
-        cv2.putText(image, str(round(probabilityValue*100,2) )+"%", (180, 75), cv2.FONT_HERSHEY_PLAIN, 5, (0, 0, 255), 2, cv2.LINE_AA)
-        cv2.putText(image, f'FPS: {int(fps)}', (30, 50), cv2.FONT_HERSHEY_PLAIN,
-                    3, (255, 0, 0), 3)
+        if probabilityValue > threshold:
+            cv2.putText(image, str(round(probabilityValue*100,2) )+"%", (180, 120), cv2.FONT_HERSHEY_PLAIN, 3, (0, 0, 255), 2, cv2.LINE_AA)
+            cv2.putText(image, f'FPS: {int(fps)}', (20, 80), cv2.FONT_HERSHEY_PLAIN,
+                        2, (255, 0, 0), 2)
+            cv2.putText(image, f'{getCalssName(classIndex)}', (150, 50), cv2.FONT_HERSHEY_PLAIN,
+                        2, (255, 0, 0), 2)
     except Exception as e: 
         print(e)
         pass
@@ -143,12 +153,16 @@ while True:
     if (cv2.waitKey(1) & 0xff) == ord('q'):
         break
 
-# test_path = r'D:\18TCLC_NHAT\nam_4\ky_1\PBL4\Sign-language-prediction\gesturePrediction\test_data\asl_alphabet_test'
+# test_path = r'D:\18TCLC_NHAT\nam_4\ky_1\PBL4\Sign-language-prediction\gesturePrediction\train_data'
 # test_list = os.listdir(test_path)
 # for x in test_list:
 #     imgOriginal = cv2.imread(test_path +'/'+x)
+#     plt.imshow(imgOriginal)
 #     img = np.array(imgOriginal)
 #     img = cv2.resize(img,(64,64))
+#     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+#     mask = cv2.inRange(hsv, (58,255,255), (62, 255, 255))
+#     mask = cv2.resize(mask, (64, 64))
 #     img = preprocessing(img)
 #     img = img.reshape(1, 64, 64, 1)
 #     prediction = model.predict(img)

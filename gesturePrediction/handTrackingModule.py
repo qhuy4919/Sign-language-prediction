@@ -31,5 +31,6 @@ class handDetector():
                     land_px.append(landmark_px)
                 if draw:
                     self.mpDraw.draw_landmarks(img, handLms,
-                                               self.mpHands.HAND_CONNECTIONS)
+                                               self.mpHands.HAND_CONNECTIONS, self.mpDraw.DrawingSpec(color=(0, 255, 0)), 
+                                               self.mpDraw.DrawingSpec(color=(0, 255, 0), thickness = 3))
         return img, land_px
