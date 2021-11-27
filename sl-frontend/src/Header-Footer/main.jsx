@@ -45,7 +45,7 @@ class Main extends React.Component {
                                                 </a>
                                             </div>
                                             <div class="feature-text">
-                                                <h2>Trợ thính</h2>
+                                                <h2>Hearing Assit</h2>
                                                 <p>
                                                     Sử dụng camera của bạn để có thể dự đoán ngôn ngữ kí
                                                     hiệu.
@@ -66,7 +66,7 @@ class Main extends React.Component {
                                                 </a>
                                             </div>
                                             <div class="feature-text">
-                                                <h2>Hướng dẫn</h2>
+                                                <h2>Instruction</h2>
                                                 <p>
                                                     Hướng dẫn về cách sử dụng website và các chức năng
                                                 </p>
@@ -86,7 +86,7 @@ class Main extends React.Component {
                                                 </a>
                                             </div>
                                             <div class="feature-text">
-                                                <h2>Về chúng tôi</h2>
+                                                <h2>About Us</h2>
                                                 <p>
                                                     Chúng tôi là những sinh viên DUT. Thông tin chi tiết
                                                     phía dưới
