@@ -1,6 +1,4 @@
 import React from "react";
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, Container, NavItem } from "reactstrap";
-
 
 class Header extends React.Component {
     render() {
