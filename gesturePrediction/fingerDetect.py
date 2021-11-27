@@ -7,7 +7,7 @@ from keras.models import load_model
 import skimage
 from skimage.transform import resize
 import matplotlib.pyplot as plt
-model = load_model('SL_model_2_1.h5')
+model = load_model('model.h5')
 
 wCam, hCam = 1280, 720
 
@@ -20,7 +20,7 @@ detector = htm.handDetector(detectionCon=0.75)
 pTime = 0
 contours_size = 100
 padding = 55
-threshold = 0.75  
+threshold = 0.75
 
 # for i in range(ord('A'), ord('Z')+1):
 #     label[chr(i)] = i - ord('A')
@@ -31,7 +31,8 @@ threshold = 0.75
 # label[26] = 'del'
 # label[27] = 'nothing'
 # label[28] = 'space'
-labels = ['ban la nhat', 'iloveyou', 'quay len nao']
+labels = ['alo', 'banlanhat', 'disagree' ,'hello','hengaplai', 'iloveyou', 
+          'maibennhaubannhe', 'nope', 'ok', 'quaylennao', 'sorry','thankyou']
 label = {
 }
 for i in range(len(labels)):
