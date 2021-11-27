@@ -32,7 +32,11 @@ class Main extends React.Component {
                                     <div className="section-heading">MENU</div>
                                     <div className="section-text">Các chức năng chính</div>
                                 </div>
-                                <div className="content-wrap">
+                                <div className="content-wrap" style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                }}>
                                     <div className="col-lg-4 col-sm-12 float-left">
                                         <div className="feature-wrap">
                                             <div class="feature-img">
