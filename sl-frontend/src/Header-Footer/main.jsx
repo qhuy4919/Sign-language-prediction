@@ -1,5 +1,10 @@
 import React from "react";
 import { FileText, Calendar, LifeBuoy } from "react-feather";
+import "../AboutUs"
+import "../Tutorial"
+import {BrowserRouter as Router, Link, Route, Routes} from "react-router-dom";
+import Tutorial from "../Components/Tutorial";
+import AboutUs from "../Components/AboutUs";
 
 class Main extends React.Component {
     render() {
@@ -16,7 +21,7 @@ class Main extends React.Component {
                                     <h5>Make people closer together</h5>
                                 </div>
                                 <div className="getting-started">
-                                    <a className="btn" href="#">
+                                    <a className="btn" href="#menu">
                                         Bắt đầu
                                     </a>
                                 </div>
@@ -24,7 +29,7 @@ class Main extends React.Component {
                         </div>
                     </div>
                 </div>
-                <div className="home-section2">
+                <div className="home-section2" id="menu">
                     <div className="content">
                         <div className="row">
                             <div className="col-lg-12">
@@ -71,9 +76,9 @@ class Main extends React.Component {
                                                     Hướng dẫn về cách sử dụng website và các chức năng
                                                 </p>
                                                 <div className="bt1">
-                                                    <a className="btn" href="#">
+                                                    <Link className="btn" to="/Tutorial">
                                                         ĐỌC HƯỚNG DẪN
-                                                    </a>
+                                                    </Link>
                                                 </div>
                                             </div>
                                         </div>
@@ -92,9 +97,9 @@ class Main extends React.Component {
                                                     phía dưới
                                                 </p>
                                                 <div className="bt1">
-                                                    <a className="btn" href="#">
+                                                    <Link className="btn" to="/AboutUs">
                                                         ABOUT US
-                                                    </a>
+                                                    </Link>
                                                 </div>
                                             </div>
                                         </div>
@@ -105,6 +110,7 @@ class Main extends React.Component {
                     </div>
                 </div>
             </div>
+
         );
     }
 }
