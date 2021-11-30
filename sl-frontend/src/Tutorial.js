@@ -12,7 +12,7 @@ function HuongDan() {
         <div className="Tutorial">
             <Header />
             <Tutorial />
-            <Footer />
+            {/*<Footer />*/}
         </div>
     );
 }

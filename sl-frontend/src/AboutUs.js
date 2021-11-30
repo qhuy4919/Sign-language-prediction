@@ -9,7 +9,7 @@ function VeChungToi() {
         <div className="AboutUs">
             <Header />
             <AboutUs />
-            <Footer />
+            {/*<Footer />*/}
         </div>
     );
 }
