@@ -6,12 +6,14 @@ import "./main.scss";
 export function Main() {
   return (
     <div id="main-container">
-      <div className="home-section">
+      <div className="home-section1" style={{
+        backgroundImage: `url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSe8otQ-9CYFEIIGJ4YIuIUBS-LFjnGzq6icw&usqp=CAU")`
+      }}>
         {/* <div className="bg" /> */}
         <div className="content1">
           <div className="row">
             <div className="col-sm-8">
-              <div className="section-heading">HEARING ASSIT</div>
+              <div className="section-heading" >HEARING ASSIT</div>
               <div className="section-text">
                 <p>Sign Language Prediction</p>
                 <h5>Make people closer together</h5>
