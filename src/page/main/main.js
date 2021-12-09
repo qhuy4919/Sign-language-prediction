@@ -1,5 +1,6 @@
 import React from "react";
 import { FileText, Calendar, LifeBuoy } from "react-feather";
+import {Button} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./main.scss";
 
@@ -19,9 +20,10 @@ export function Main() {
                 <h5>Make people closer together</h5>
               </div>
               <div className="getting-started">
-                <a className="btn" href="#menu">
-                  Bắt đầu
-                </a>
+                {/*<a className="btn" href="#menu">*/}
+                {/*  Bắt đầu*/}
+                {/*</a>*/}
+                <Button href="#menu">Bắt đầu</Button>
               </div>
             </div>
           </div>
@@ -57,9 +59,13 @@ export function Main() {
                         hiệu.
                       </p>
                       <div className="bt1">
-                        <a className="btn" href="#">
-                          SỬ DỤNG NGAY
-                        </a>
+                        {/*<a className="btn" href="#">*/}
+                        {/*  SỬ DỤNG NGAY*/}
+                        {/*</a>*/}
+                        <Link to="/">
+                          <Button>SỬ DỤNG NGAY</Button>
+                        </Link>
+                        {/*<Button href="#">SỬ DỤNG NGAY</Button>*/}
                       </div>
                     </div>
                   </div>
@@ -75,9 +81,10 @@ export function Main() {
                       <h2>Instruction</h2>
                       <p>Hướng dẫn về cách sử dụng website và các chức năng</p>
                       <div className="bt1">
-                        <Link className="btn" to="/Tutorial">
-                          ĐỌC HƯỚNG DẪN
+                        <Link to="/Tutorial">
+                          <Button>ĐỌC HƯỚNG DẪN</Button>
                         </Link>
+                        {/*<Button href="#tutorial">ĐỌC HƯỚNG DẪN</Button>*/}
                       </div>
                     </div>
                   </div>
@@ -96,8 +103,8 @@ export function Main() {
                         phía dưới
                       </p>
                       <div className="bt1">
-                        <Link className="btn" to="/AboutUs">
-                          ABOUT US
+                        <Link to="/AboutUs">
+                          <Button>ABOUT US</Button>
                         </Link>
                       </div>
                     </div>

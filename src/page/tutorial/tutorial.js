@@ -3,7 +3,7 @@ import { Footer, Header } from "../../component";
 
 export function Tutorial() {
   return (
-    <div className="tutorial-container">
+    <div className="tutorial-container" id="tutorial">
       <Header />
       <div className="tutorial">
         <div className="home-section2">
