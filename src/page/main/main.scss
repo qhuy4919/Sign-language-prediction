@@ -1,0 +1,14 @@
+#main-container {
+  .home-section {
+    .content1 {
+      display: flex;
+      justify-content: center;
+
+      .row {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+}
