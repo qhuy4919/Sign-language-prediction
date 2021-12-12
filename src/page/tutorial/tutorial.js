@@ -1,10 +1,26 @@
 import React from "react";
 import { Footer, Header } from "../../component";
+import {Button} from "react-bootstrap";
 
 export function Tutorial() {
   return (
     <div className="tutorial-container" id="tutorial">
-      <Header />
+      <div className="home-section1" style={{
+        backgroundImage: `url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSe8otQ-9CYFEIIGJ4YIuIUBS-LFjnGzq6icw&usqp=CAU")`
+      }}>
+        {/* <div className="bg" /> */}
+        <div className="content1">
+          <div className="row">
+            <div className="col-sm-8">
+              <div className="section-heading" >HEARING ASSIT</div>
+              <div className="section-text">
+                <p>Sign Language Prediction</p>
+                <h5>Make people closer together</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="tutorial">
         <div className="home-section2">
           <div className="content">
@@ -41,7 +57,7 @@ export function Tutorial() {
                     <div className="feature-wrap">
                       <div class="feature-text">
                         <h2>Bước 3</h2>
-                        <p>Kết quả sẽ được trả về điện thoại</p>
+                        <p>Kết quả sẽ được trả về trực tiếp trên video</p>
                       </div>
                     </div>
                   </div>
