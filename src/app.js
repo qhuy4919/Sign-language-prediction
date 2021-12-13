@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { AboutUs, Main, Tutorial } from "./page";
+import { AboutUs, Main, Tutorial, SignLanguage, ImageProcessing } from "./page";
 import { Header, Footer } from "./component";
 import "bootstrap/dist/css/bootstrap.css";
 import "./app.css";
@@ -14,11 +14,17 @@ export function App() {
           <Route exact path="/" element>
             <Main />
           </Route>
-          <Route path="/Tutorial">
+          <Route path="/tutorial">
             <Tutorial />
           </Route>
-          <Route path="/AboutUs">
+          <Route path="/about-us">
             <AboutUs />
+          </Route>
+          <Route path="/sign-language">
+            <SignLanguage />
+          </Route>
+          <Route path="/123">
+            <ImageProcessing />
           </Route>
         </Switch>
       </Router>

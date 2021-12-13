@@ -55,9 +55,9 @@ export function Main() {
                         hiệu.
                       </p>
                       <div className="bt1">
-                        <a className="btn" href="#">
+                        <Link className="btn" to="/sign-language">
                           SỬ DỤNG NGAY
-                        </a>
+                        </Link>
                       </div>
                     </div>
                   </div>

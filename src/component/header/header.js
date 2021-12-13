@@ -3,7 +3,7 @@ import React from "react";
 export class Header extends React.Component {
   render() {
     return (
-      <div class="header">
+      <div className="header">
         <nav
           color="white"
           className="navbar navbar-expand-lg navbar-light bg-light"

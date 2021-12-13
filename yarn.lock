@@ -1377,6 +1377,16 @@
     "@types/yargs" "^16.0.0"
     chalk "^4.0.0"
 
+"@mediapipe/camera_utils@^0.3.1632432234":
+  version "0.3.1632432234"
+  resolved "https://registry.yarnpkg.com/@mediapipe/camera_utils/-/camera_utils-0.3.1632432234.tgz#60d859ac347506e2729f431afb8995b0a8ca8589"
+  integrity sha512-uGWOSd/1dNUka5/KkDs37pjYoHhFwUtQwQL/zhkQxZHAgYS8oCcz9vupa3pHthUzHDqzTw4XqB7teuoVRO+8/A==
+
+"@mediapipe/hands@^0.4.1635986972":
+  version "0.4.1635986972"
+  resolved "https://registry.yarnpkg.com/@mediapipe/hands/-/hands-0.4.1635986972.tgz#21116c13ed69ddb3452b94a7862367f77a5b6927"
+  integrity sha512-xVsoT7beiY9glBAHtcEBkfYO1eDMMzmU0U3wOYEy+sphu5y4Lx4Eg9k1qR+IsYYr1CDx+hYQH3YMVXm9D68+8Q==
+
 "@nodelib/fs.scandir@2.1.4":
   version "2.1.4"
   resolved "https://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.4.tgz"
@@ -7777,6 +7787,11 @@ open@^7.0.2:
     is-docker "^2.0.0"
     is-wsl "^2.1.1"
 
+opencv.js@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/opencv.js/-/opencv.js-1.2.1.tgz#9e89fd669a749f80574ba5d4615a5ff3e3c09a16"
+  integrity sha512-+ji5Pk3eyz+RRSeZr2kLZNJpjsKoGyPJOjFWng7+Cuq9ylHakBqJMxDGlBW1+qdju3k8DadWOiHJ6JaF28UpKA==
+
 opn@^5.5.0:
   version "5.5.0"
   resolved "https://registry.npmjs.org/opn/-/opn-5.5.0.tgz"
@@ -9319,6 +9334,11 @@ react-transition-group@^4.4.1, react-transition-group@^4.4.2:
     dom-helpers "^5.0.1"
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
+
+react-webcam@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/react-webcam/-/react-webcam-6.0.0.tgz#46dd9ba44cebe6bf3cc4ea2ff09d12243900abfa"
+  integrity sha512-pw7067WYnDHRjAXYXrsLeig9/AAxCFDnnaEJzZ5ep6UZoYMqF4UNRtVkeTk0LotpwqT/c8vHisn/+QodNbUsQA==
 
 react@^17.0.2:
   version "17.0.2"
