@@ -1,25 +1,29 @@
 import React from "react";
 import { FileText, Calendar, LifeBuoy } from "react-feather";
+import {Button} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./main.scss";
 
 export function Main() {
   return (
     <div id="main-container">
-      <div className="home-section">
+      <div className="home-section1" style={{
+        backgroundImage: `url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSe8otQ-9CYFEIIGJ4YIuIUBS-LFjnGzq6icw&usqp=CAU")`
+      }}>
         {/* <div className="bg" /> */}
         <div className="content1">
           <div className="row">
             <div className="col-sm-8">
-              <div className="section-heading">HEARING ASSIT</div>
+              <div className="section-heading" >HEARING ASSIT</div>
               <div className="section-text">
                 <p>Sign Language Prediction</p>
                 <h5>Make people closer together</h5>
               </div>
               <div className="getting-started">
-                <a className="btn" href="#menu">
-                  Bắt đầu
-                </a>
+                {/*<a className="btn" href="#menu">*/}
+                {/*  Bắt đầu*/}
+                {/*</a>*/}
+                <Button href="#menu">Bắt đầu</Button>
               </div>
             </div>
           </div>
@@ -55,9 +59,13 @@ export function Main() {
                         hiệu.
                       </p>
                       <div className="bt1">
-                        <Link className="btn" to="/sign-language">
-                          SỬ DỤNG NGAY
+                        {/*<a className="btn" href="#">*/}
+                        {/*  SỬ DỤNG NGAY*/}
+                        {/*</a>*/}
+                        <Link to="/">
+                          <Button>SỬ DỤNG NGAY</Button>
                         </Link>
+                        {/*<Button href="#">SỬ DỤNG NGAY</Button>*/}
                       </div>
                     </div>
                   </div>
@@ -73,9 +81,10 @@ export function Main() {
                       <h2>Instruction</h2>
                       <p>Hướng dẫn về cách sử dụng website và các chức năng</p>
                       <div className="bt1">
-                        <Link className="btn" to="/Tutorial">
-                          ĐỌC HƯỚNG DẪN
+                        <Link to="/Tutorial">
+                          <Button>ĐỌC HƯỚNG DẪN</Button>
                         </Link>
+                        {/*<Button href="#tutorial">ĐỌC HƯỚNG DẪN</Button>*/}
                       </div>
                     </div>
                   </div>
@@ -94,8 +103,8 @@ export function Main() {
                         phía dưới
                       </p>
                       <div className="bt1">
-                        <Link className="btn" to="/AboutUs">
-                          ABOUT US
+                        <Link to="/AboutUs">
+                          <Button>ABOUT US</Button>
                         </Link>
                       </div>
                     </div>
