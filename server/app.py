@@ -14,7 +14,11 @@ app = Flask(__name__)
 lock = threading.Lock()
 
 #
+wCam, hCam = 1280, 720
+
 camera=cv2.VideoCapture(0)
+camera.set(3, wCam)
+camera.set(4, hCam)
 contours_size = 100
 padding = 55
 threshold = 0.75
