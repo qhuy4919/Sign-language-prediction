@@ -80,14 +80,19 @@ export function SignLanguage() {
 
   return (
     <div className="video-container">
-      <Webcam ref={webcamRef} id="webcam" style={{ width: 640, height: 480 }} />
+      {/* <Webcam ref={webcamRef} id="webcam" style={{ width: 640, height: 480 }} />
       <canvas
         ref={canvasRef}
         style={{
           width: 640,
           height: 480,
         }}
-      ></canvas>
+      ></canvas> */}
+      <div className="App">
+        <header className="App-header">
+          <img src={"/stream"} className="App-logo" alt="logo" />
+        </header>
+      </div>
     </div>
   );
 }

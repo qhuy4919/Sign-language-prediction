@@ -5,7 +5,7 @@ export function ImageProcessing() {
   // console.log(src);
   return (
     <div>
-      <img src={raw_image} alt="????" />
+      <img src={raw_image} alt="" />
     </div>
   );
 }
